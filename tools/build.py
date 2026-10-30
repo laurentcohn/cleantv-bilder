@@ -112,7 +112,7 @@ def build(path, id):
     dock = region(photo, 96, 676, 1824, 908)
     whole = float(luma(photo).mean())
     entry = {
-        'id': id, 'name': name_of(id), 'v': hashlib.sha256(path.read_bytes()).hexdigest()[:12],
+        'id': id, 'name': name_of(id), 'v': hashlib.sha256(path.read_bytes() + bytes([RECIPE])).hexdigest()[:12],
         'tone': 'light' if whole > 120 else 'dark',
         'ut': {'tr': 'mist' if tr > 110 else 'light', 'br': 'mist' if br > 110 else 'light'},
         'frostVeil': .44 if dock > 160 else .30 if dock > 110 else .20,
