@@ -11,7 +11,7 @@ VENV="$ROOT/.venv"
 if [[ ! -x "$VENV/bin/python" ]]; then
   echo "Richte Python-Umgebung ein (einmalig) …"
   python3 -m venv "$VENV"
-  "$VENV/bin/pip" install --quiet -r "$ROOT/tools/requirements.txt"
+  "$VENV/bin/pip" install --quiet --disable-pip-version-check -r "$ROOT/tools/requirements.txt"
 fi
 
 "$VENV/bin/python" "$ROOT/tools/add.py" "$@"
